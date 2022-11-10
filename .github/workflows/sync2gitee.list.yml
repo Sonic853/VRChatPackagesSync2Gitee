@@ -39,6 +39,10 @@ jobs:
         with:
           user: 'Tree-Roots'
 
+      - name: Mark github workspace as safe
+        run: |
+          git config --global --add safe.directory ${{ github.workspace }}
+
 
       - name: Mirror hub with cache and list
         uses: Yikun/hub-mirror-action@v0.13
