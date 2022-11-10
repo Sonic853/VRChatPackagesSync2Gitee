@@ -45,7 +45,7 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: 'VRChatPackages,VRChatUdonSharpPackages,VRChatClientsimPackages,VPRTPackage'
-          cache_path: ${{ github.workspace }}/hub-mirror-cache
+          cache_path: /github/workspace/hub-mirror-cache
           account_type: user
           force_update: true
 
