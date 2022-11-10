@@ -33,11 +33,11 @@ jobs:
       #     key: ${{ runner.os }}-${{ steps.info.outputs.key }}-list-cache-${{ steps.info.outputs.time }}
       #     restore-keys: ${{ runner.os }}-${{ steps.info.outputs.key }}-list-
 
-      - name: Generate repo list
-        id: repo
-        uses: yi-Xu-0100/repo-list-generator@v1.0.0
-        with:
-          user: 'Tree-Roots'
+      # - name: Generate repo list
+      #   id: repo
+      #   uses: yi-Xu-0100/repo-list-generator@v1.0.0
+      #   with:
+      #     user: 'Tree-Roots'
 
       - name: Mark github workspace as safe
         run: |
