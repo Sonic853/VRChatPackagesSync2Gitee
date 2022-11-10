@@ -6,7 +6,6 @@ name: sync2gitee(list)
 # lastmod: 2021-02-02 10:23:02
 
 on:
-  workflow_dispatch:
   schedule:
     # UTC 17:30 -> CST (China) 1:30 see https://datetime360.com/cn/utc-cst-china-time/
     - cron: '0 10 * * *'
@@ -33,9 +32,12 @@ jobs:
           key: ${{ runner.os }}-${{ steps.info.outputs.key }}-list-cache-${{ steps.info.outputs.time }}
           restore-keys: ${{ runner.os }}-${{ steps.info.outputs.key }}-list-
 
-      # - name: Generate repo list
-      #   id: repo
-      #   uses: yi-Xu-0100/repo-list-generator@v1.0.0
+      - name: Generate repo list
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v1.0.0
+        with:
+          user: 'Tree-Roots'
+
 
       - name: Mirror hub with cache and list
         uses: Yikun/hub-mirror-action@v0.13
@@ -45,7 +47,7 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: 'VRChatPackages,VRChatUdonSharpPackages,VRChatClientsimPackages,VPRTPackage'
-          cache_path: /github/workspace/hub-mirror-cache
+          cache_path: ${{ github.workspace }}/hub-mirror-cache
           account_type: user
           force_update: true
 
